@@ -7,6 +7,7 @@
 ## 🚀 Funcionalidades (CRUD)
 
 O projeto conta com um sistema completo de gerenciamento, incluindo:
+
 - **Cadastro de Produtos:** Registro de Armas (Dano) e Armaduras (Defesa).
 - **Listagem Total:** Visualização de todos os itens do arsenal.
 - **Consulta por ID:** Busca rápida e precisa.
