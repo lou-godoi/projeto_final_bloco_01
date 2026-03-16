@@ -27,23 +27,30 @@ export function main() {
         console.log("            2 - Listar todos os Produtos             ");
         console.log("            3 - Atualizar Produto                    ");
         console.log("            4 - Deletar Produto                      ");
+        console.log("            5 - Consultar Produto por Nome           ");
+        console.log("            6 - Listar Produtos por Tipo             ");
         console.log("            0 - Sair                                 ");
         console.log(colors.reset);
         console.log(colors.fg.cyan, "*****************************************************");
         console.log(colors.reset);
 
-        console.log("Entre com a opção desejada: ");
-        opcao = readline.questionInt("");
-
-        if (opcao === 0) {
-            console.log(colors.fg.redstrong, "\nArsenal Medieval - Onde a história ganha vida!");
-            console.log(colors.reset);
-            sobre();
-            process.exit(0);
-            
+       try {
+            console.log("Entre com a opção desejada: ");
+            opcao = readline.questionInt("");
+        } catch (error) {
+            console.log(colors.fg.red, "\nErro: Digite apenas números inteiros!", colors.reset);
+            opcao = -1; // Sswitch vai cair no "default" e não fechar o programa
         }
 
         switch (opcao) {
+
+            case 0:
+                console.log(colors.fg.redstrong, "\nArsenal Medieval - Onde a história ganha vida!", colors.reset);
+                // Um efeito visual simples antes de fechar
+                console.log(colors.bg.black, colors.fg.magenta, "Fechando as portas do ferreiro...", colors.reset);
+                sobre();
+                process.exit(0);
+
             case 1:
                 console.log(colors.fg.white, "\n Cadastrar Produto\n", colors.reset);
                 
@@ -101,6 +108,20 @@ export function main() {
                 console.log(colors.fg.white, "\n Deletar Produto\n", colors.reset);
                 id = readline.questionInt("Digite o ID do produto: ");
                 produtos.deletar(id);
+                keyPress();
+                break;
+
+            case 5:
+                console.log(colors.fg.white, "\n Consultar Produto por Nome\n", colors.reset);
+                nome = readline.question("Digite o nome do produto: ");
+                produtos.procurarPorNome(nome);
+                keyPress();
+                break;
+
+                case 6:
+                console.log(colors.fg.white, "\n Listar por Tipo\n", colors.reset);
+                tipo = readline.keyInSelect(tiposProdutos, "Selecione o tipo: ", { cancel: false }) + 1;
+                produtos.listarPorTipo(tipo);
                 keyPress();
                 break;
 

@@ -4,6 +4,28 @@ import { colors } from "../util/Colors";
 
 export class ProdutoController implements ProdutoRepository {
 
+    listarPorTipo(tipo: number): void {
+    let buscaPorTipo = this.listaProdutos.filter(p => p.tipo === tipo);
+
+    if (buscaPorTipo.length > 0) {
+        buscaPorTipo.forEach(produto => produto.visualizar());
+    } else {
+        console.log(colors.fg.redstrong, "\nNenhum produto deste tipo foi encontrado!", colors.reset);
+    }
+}
+
+    procurarPorNome(nome: string): void {
+    let buscaPorNome = this.listaProdutos.filter(p => 
+        p.nome.toUpperCase().includes(nome.toUpperCase())
+    );
+
+    if (buscaPorNome.length > 0) {
+        buscaPorNome.forEach(produto => produto.visualizar());
+    } else {
+        console.log(colors.fg.redstrong, `\nNenhum produto com o nome "${nome}" foi encontrado!`, colors.reset);
+    }
+}
+
     private listaProdutos: Array<Produto> = new Array<Produto>();
     id: number = 0;
 
