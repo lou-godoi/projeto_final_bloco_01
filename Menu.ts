@@ -4,7 +4,7 @@ import { colors } from './src/util/Colors';
 export function main() {
     let opcao: number;
 
-    while (true) {
+    while (true) { 
 
         console.log(colors.fg.cyan,"*****************************************************");
         console.log(colors.reset,"             ARSENAL MEDIEVAL DA LOU                 ");
