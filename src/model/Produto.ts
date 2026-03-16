@@ -1,3 +1,5 @@
+import { colors } from "../util/Colors";
+
 export abstract class Produto {
     private _id: number;
     private _nome: string;
@@ -57,9 +59,11 @@ export abstract class Produto {
                 break;
         }
 
-        console.log("\n*****************************************************");
+        console.log("\n---------------------------------------------------");
+        console.log(colors.fg.cyan,);
         console.log("                DADOS DO PRODUTO                     ");
-        console.log("*****************************************************");
+        console.log(colors.reset,);
+        console.log("-----------------------------------------------------");
         console.log(`ID: ${this._id}`);
         console.log(`Nome: ${this._nome}`);
         console.log(`Tipo: ${tipo}`);
